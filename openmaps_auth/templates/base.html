@@ -10,12 +10,28 @@
 <link rel="icon" href="{% static 'img/vantor_symbol_w.svg' %}">
 <script>
   function addtext(e) {
-    document.querySelector("#default_title").innerHTML = e.getAttribute("data-name")
-    document.querySelector("#featured_application_description").innerHTML = e.getAttribute("data-description")
+    var titleEl = document.querySelector("#default_title");
+    var descEl = document.querySelector("#featured_application_description");
+
+    if (titleEl) {
+      titleEl.innerHTML = e.getAttribute("data-name") || "";
+    }
+    if (descEl) {
+      var description = e.getAttribute("data-description");
+      descEl.innerHTML = description || "";
+      descEl.style.display = description ? "flex" : "none";
+    }
   }
   function removetext(e) {
-    document.querySelector("#featured_application_description").innerHTML = ""
-    document.querySelector("#default_title").innerHTML = document.querySelector("#default_title").getAttribute("data-name")
+    var titleEl = document.querySelector("#default_title");
+    var descEl = document.querySelector("#featured_application_description");
+    if (descEl) {
+      descEl.innerHTML = "";
+      descEl.style.display = "none";
+    }
+    if (titleEl) {
+      titleEl.innerHTML = titleEl.getAttribute("data-name") || "";
+    }
   }
 </script>
 <title>{% if request.user.is_authenticated %}{{ openmaps_auth.title }}{% else %}Log in to {{ openmaps_auth.title }}{% endif %}</title>
