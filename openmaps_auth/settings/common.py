@@ -25,7 +25,7 @@ STEP_SECRETS = STEPPATH / "secrets"
 OPENMAPS_AUTH_BACKEND = env.str("OPENMAPS_AUTH_BACKEND", default=None)
 if OPENMAPS_AUTH_BACKEND:
     OPENMAPS_AUTH_SECRET = env.str("OPENMAPS_AUTH_SECRET", default="")
-OPENMAPS_AUTH_TITLE = env.str("OPENMAPS_AUTH_TITLE", default="Maxar OpenMaps")
+OPENMAPS_AUTH_TITLE = env.str("OPENMAPS_AUTH_TITLE", default="VantorMaps")
 OPENMAPS_AUTH_APP_LINKS = env.json(
     "OPENMAPS_AUTH_APP_LINKS", default=[{"link": "/", "text": "MapEdit"}]
 )
