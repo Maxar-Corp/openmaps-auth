@@ -2,10 +2,12 @@
 <html>
 <head>
 {% load static %}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
 {% endblock style %}
-<link rel="icon" href="{% static 'img/x_logo.png' %}">
+<link rel="icon" href="{% static 'img/vantor_symbol_w.svg' %}">
 <script>
   function addtext(e) {
     document.querySelector("#default_title").innerHTML = e.getAttribute("data-name")
@@ -23,7 +25,7 @@
 {% block body %}
 {% endblock body %}
 <div class="footer_container">
-  <p> Copyright © Maxar Technologies, Inc.</p>
+  <p> Copyright © Vantor</p>
 </div>
 </body>
 </html>

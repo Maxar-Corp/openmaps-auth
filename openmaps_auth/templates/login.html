@@ -1,57 +1,28 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load static i18n %}
 {% block body %}
-<div class="header_spacing">
-  <div class="right_wrap">
-    <h3 class="mr2 maxar_logo">MAXAR</h3>
+<div class="hub-landing">
+  <div class="hub-brand">
+    <img src="{% static 'img/vantor_h_w.svg' %}" alt="Vantor" />
   </div>
-  <div class="right_wrap">
-    <h3 class="mr2">Please login to continue</h3>
-    <p class="mr2"></p>
+  <div class="hub-card">
+    <h1>Log in</h1>
+    {% if form.errors and not form.non_field_errors %}
+      <p class="errornote">{% if form.errors.items|length == 1 %}{% translate "Please correct the error below." %}{% else %}{% translate "Please correct the errors below." %}{% endif %}</p>
+    {% endif %}
+    {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+        <p class="errornote">{{ error }}</p>
+      {% endfor %}
+    {% endif %}
+    <form method="post" action="{% url 'openmaps_login' %}">
+      {% csrf_token %}
+      <label for="{{ form.username.id_for_label }}">Username</label>
+      {{ form.username }}
+      <label for="{{ form.password.id_for_label }}">Password</label>
+      {{ form.password }}
+      <input class="hub-primary-button" type="submit" value="{% translate 'Log in' %}" />
+    </form>
   </div>
-</div>
-<div>
-  <form class="form_align" name="login" method="post" action="{% url 'openmaps_login' %}">
-    {% csrf_token %}
-    <fieldset class="form_border">
-      <div>
-        <h1 class="form_title">Sign In:</h1>
-      </div>
-{% if form.errors and not form.non_field_errors %}
-      <div>
-        <div class="form_title" >
-          <p class="errornote">{% if form.errors.items|length == 1 %}{% translate "Please correct the error below." %}{% else %}{% translate "Please correct the errors below." %}{% endif %}
-          </p>
-        </div>
-      </div>
-{% endif %}
-{% if form.non_field_errors %}
-      <div>
-        <div class="form_title" >
-{%   for error in form.non_field_errors %}
-          <p class="errornote">
-            {{ error }}
-          </p>
-{%   endfor %}
-        </div>
-      </div>
-{% endif %}
-      <div class="input_size">
-        <label class="form_label">Username:</label>
-      </div>
-      <div class="input_size">
-        <li class="form_input">{{ form.username }}</li>
-      </div>
-      <div class="input_size">
-        <label class="form_label">Password:</label>
-      </div>
-      <div class="input_size">
-        <li class="form_input">{{ form.password }}</li>
-      </div>
-      <div class="button_align">
-        <input class="form_button" type="submit" value="{% translate 'Log in' %}" />
-      </div>
-    </fieldset>
-  </form>
 </div>
 {% endblock body %}

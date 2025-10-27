@@ -2,26 +2,19 @@
 {% load static %}
 {% load i18n %}
 {% block body %}
-<div class="header_spacing">
-<div class="right_wrap">
-    <h3 class="mr2 maxar_logo">MAXAR</h3>
-</div>
 {% if request.user.is_authenticated %}
-<div class="right_wrap">
-    <h3 class="mr2">Logged in as {{ request.user.email }} </h3>
-    <a class="login_button" href="{% url 'openmaps_logout' %}">{% translate "Log out" %}</a>
-</div>
-{% else %}
-<div class="right_wrap">
-    <h3 class="mr2">Please log in to continue</h3>
-    <a class="login_button" href="{% url 'openmaps_login' %}">{% translate "Log in" %}</a>
-</div>
-{% endif %}
+<div class="header_spacing">
+  <div class="right_wrap">
+      <h3 class="mr2 maxar_logo">MAXAR</h3>
+  </div>
+  <div class="right_wrap">
+      <h3 class="mr2">Logged in as {{ request.user.email }} </h3>
+      <a class="login_button" href="{% url 'openmaps_logout' %}">{% translate "Log out" %}</a>
+  </div>
 </div>
 <div class="title_text">
     <h1 class="center_text">{% block title_text %}Welcome to {{ openmaps_auth.title }}!{% endblock title_text %}</h1>
 </div>
-{% if request.user.is_authenticated %}
 <div class="app_text">
     {% block app_heading %}<h1 id="default_title" data-name="FEATURED APPLICATIONS">FEATURED APPLICATIONS</h1>{% endblock app_heading %}
     <p id="featured_application_description" class="hover_text">
@@ -62,8 +55,15 @@
 <div>
 {% endblock center %}
 {% else %}
-  <div class="login_request_text">
-    <h1>Please login to access full suite of applications</h1>
+<div class="hub-landing">
+  <div class="hub-brand">
+    <img src="{% static 'img/vantor_h_w.svg' %}" alt="Vantor" />
   </div>
+  <div class="hub-card">
+    <h1>Welcome to VantorMaps!</h1>
+    <p>Please login to access the full suite of applications</p>
+    <a class="hub-primary-button" href="{% url 'openmaps_login' %}">Next -></a>
+  </div>
+</div>
 {% endif %}
 {% endblock body %}
