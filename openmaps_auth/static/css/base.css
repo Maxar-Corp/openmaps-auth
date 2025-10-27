@@ -410,7 +410,7 @@ fieldset {
   width: 100%;
   margin: 0;
   padding: 8px 0;
-  background: var(--hub-bg, #0B0B0F);
+  background: var(--hub-bg, #1d1d1d);
   color: #fff;
   z-index: 5;
 }
@@ -556,7 +556,7 @@ ul.messagelist li.error {
 @font-face{font-family:'TWK Everett';src:url('../fonts/TWKEverett-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;}
 
 /* Vantor Hub-like unauthenticated landing styles */
-:root { --hub-purple:#A855F7; --hub-aqua:#28EAE4; --hub-bg:#0B0B0F; --hub-card:#111016; --hub-text:#E5E7EB; --hub-muted:#A3A3A3; }
+:root { --hub-purple:#A855F7; --hub-aqua:#28EAE4; --hub-bg:#1d1d1d; --hub-card:#2a2a2a; --hub-text:#E5E7EB; --hub-muted:#A3A3A3; }
 .hub-landing{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--hub-bg);padding:2rem;position:relative;}
 .hub-brand{position:absolute;top:24px;left:24px;display:block;}
 .hub-brand img{height:28px;width:auto;opacity:.95;}
