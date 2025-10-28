@@ -28,6 +28,6 @@ def set_auth_cookies(request, response):
     messages.add_message(
         request,
         messages.SUCCESS,
-        "You've successfully logged in to VantorMaps!",
+        f"You've successfully logged in to {settings.OPENMAPS_AUTH_TITLE}!",
     )
     return response

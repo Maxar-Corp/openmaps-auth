@@ -12,7 +12,7 @@
     <a href="{% url 'openmaps_logout' %}">{% translate "Log out" %}</a>
   </div>
   <div class="hub-welcome-banner">
-    <h1>Welcome to VantorMaps!</h1>
+    <h1>Welcome to {{ openmaps_auth.title }}!</h1>
   </div>
   <div class="hub-menu-content">
     <div class="hub-menu-title">
@@ -61,7 +61,7 @@
     <img src="{% static 'img/vantor_h_w.svg' %}" alt="Vantor" />
   </div>
   <div class="hub-card">
-    <h1>Welcome to VantorMaps!</h1>
+    <h1>Welcome to {{ openmaps_auth.title }}!</h1>
     <p>Please login to access the full suite of applications</p>
     <a class="hub-primary-button" href="{% url 'openmaps_login' %}">Next -></a>
   </div>
