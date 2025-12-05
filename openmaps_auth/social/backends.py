@@ -38,14 +38,20 @@ class LoginGovOpenIdConnect(OpenIdConnectAuth):
             return False
 
     def auth_complete_params(self, state=None):
-        return {
+        redirect_uri = self.get_redirect_uri(state)
+        logger.info(f"auth_complete_params redirect_uri: {redirect_uri}")
+        logger.info(f"auth_complete_params state: {state}")
+        params = {
             "client_assertion": self.generate_client_secret(),
             "client_assertion_type": (
                 "urn:ietf:params:oauth:client-assertion-type:jwt-bearer"
             ),
             "code": self.data.get("code", ""),
             "grant_type": "authorization_code",
+            "redirect_uri": redirect_uri,
         }
+        logger.info(f"auth_complete_params full params (without client_assertion): {dict((k, v) for k, v in params.items() if k != 'client_assertion')}")
+        return params
 
     def auth_params(self, state=None):
         params = {"acr_values": self.ACR_VALUES}
